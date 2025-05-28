@@ -1,6 +1,6 @@
 from .base import Base
 from sqlalchemy import Integer,String,Column
-
+from sqlalchemy.orm import relationship
 
 
 class Member(Base):
@@ -10,6 +10,9 @@ class Member(Base):
     _name = Column("name",String)
     _email =Column("email",String)
     membership_no =Column(Integer)
+
+
+    borrowed_books = relationship("BorrowedBook", backref="member")
 
 
     @property
@@ -22,4 +25,17 @@ class Member(Base):
             raise ValueError ("Name should be more than 3 or 25")
         else:
             self._name = value
+
+    
+    @property
+    def email(self):
+        return self._email
+
+    @email.setter
+    def email(self, value: str):
+        if "@" not in value or "." not in value:
+            raise ValueError("Please enter a valid email address.")
+        else:
+            self._email = value
+
 
