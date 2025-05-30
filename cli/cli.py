@@ -20,7 +20,7 @@ def get_session():
 
 def create_tables():
     Base.metadata.create_all(get_engine())
-    print("✅ Tables created (if not already existing)")
+    print(" Tables created (if not already existing)")
 
 # Members Menu
 def members_menu():
@@ -42,7 +42,7 @@ def members_menu():
             new_member = Member(name=name, email=email, membership_no=membership_no)
             session.add(new_member)
             session.commit()
-            click.echo(f"✅ Added member: {name}, Email: {email}, Membership No: {membership_no}")
+            click.echo(f" Added member: {name}, Email: {email}, Membership No: {membership_no}")
 
         elif choice == 'b':
             member_id = input("Enter member ID to remove: ")
@@ -50,13 +50,13 @@ def members_menu():
             if member:
                 session.delete(member)
                 session.commit()
-                click.echo(f"🗑️ Removed member with ID {member_id}")
+                click.echo(f" Removed member with ID {member_id}")
             else:
-                click.echo("❌ Member not found.")
+                click.echo(" Member not found.")
 
         elif choice == 'c':
             members = session.query(Member).all()
-            click.echo("📋 All Members:")
+            click.echo(" All Members:")
             for m in members:
                 click.echo(f" - ID: {m.id}, Name: {m.name}, Email: {m.email}, No: {m.membership_no}")
 
@@ -64,7 +64,7 @@ def members_menu():
             session.close()
             break
         else:
-            click.echo("❌ Invalid choice. Try again.")
+            click.echo(" Invalid choice. Try again.")
 
 # Books Menu
 def books_menu():
@@ -82,11 +82,11 @@ def books_menu():
         if choice == 'a':
             title = input("Enter book title: ")
             author = input("Enter book author: ")
-            available_copies = int(input("Enter available copies: "))  # corrected name
+            available_copies = int(input("Enter available copies: ")) 
             new_book = Book(title=title, author=author, available_copies=available_copies)
             session.add(new_book)
             session.commit()
-            click.echo(f"📚 Added book: {title} by {author}")
+            click.echo(f" Added book: {title} by {author}")
 
         elif choice == 'b':
             book_id = input("Enter book ID to remove: ")
@@ -94,13 +94,13 @@ def books_menu():
             if book:
                 session.delete(book)
                 session.commit()
-                click.echo(f"🗑️ Removed book with ID {book_id}")
+                click.echo(f" Removed book with ID {book_id}")
             else:
-                click.echo("❌ Book not found.")
+                click.echo(" Book not found.")
 
         elif choice == 'c':
             books = session.query(Book).all()
-            click.echo("📚 All Books:")
+            click.echo(" All Books:")
             for b in books:
                 click.echo(f" - ID: {b.id}, Title: {b.title}, Author: {b.author}, Available Copies: {b.available_copies}")
 
@@ -108,7 +108,7 @@ def books_menu():
             session.close()
             break
         else:
-            click.echo("❌ Invalid choice. Try again.")
+            click.echo(" Invalid choice. Try again.")
 
 
 # Guests Menu
@@ -129,7 +129,7 @@ def guests_menu():
             new_guest = Guest(name=name)
             session.add(new_guest)
             session.commit()
-            click.echo(f"🎟️ Added guest: {name}")
+            click.echo(f" Added guest: {name}")
 
         elif choice == 'b':
             guest_id = input("Enter guest ID to remove: ")
@@ -137,9 +137,9 @@ def guests_menu():
             if guest:
                 session.delete(guest)
                 session.commit()
-                click.echo(f"🗑️ Removed guest with ID {guest_id}")
+                click.echo(f" Removed guest with ID {guest_id}")
             else:
-                click.echo("❌ Guest not found.")
+                click.echo(" Guest not found.")
 
         elif choice == 'c':
             guests = session.query(Guest).all()
@@ -151,7 +151,7 @@ def guests_menu():
             session.close()
             break
         else:
-            click.echo("❌ Invalid choice. Try again.")
+            click.echo("Invalid choice. Try again.")
 
 # Main Menu
 @click.command()
@@ -159,7 +159,7 @@ def main_menu():
     create_tables()
 
     while True:
-        click.echo("\n📘 Library System Main Menu:")
+        click.echo("\n Library System Main Menu:")
         click.echo("1. Members")
         click.echo("2. Books")
         click.echo("3. Guests")
@@ -174,10 +174,10 @@ def main_menu():
         elif choice == '3':
             guests_menu()
         elif choice == '4':
-            click.echo("👋 Goodbye!")
+            click.echo("Goodbye!")
             break
         else:
-            click.echo("❌ Invalid choice. Please enter 1, 2, 3, or 4.")
+            click.echo(" Invalid choice. Please enter 1, 2, 3, or 4.")
 
 if __name__ == "__main__":
     main_menu()

@@ -55,4 +55,7 @@ Yasir Mohammed Ahmed
 # github link
 [text](https://github.com/4512yasir/library_system_cli)
 
+# video link
+[text](https://www.loom.com/share/66b857ca50c14f0d836ff69cc576130e?sid=45067780-05c1-4a06-be6f-60a923f00352)
+
 
